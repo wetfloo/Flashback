@@ -11,7 +11,13 @@ import javax.inject.Inject
 class NotificationsViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
-    private val _textState: MutableStateFlow<String> =
-        MutableStateFlow("This is a notifications screen")
-    val textState = _textState.asStateFlow()
+    private val _itemsState: MutableStateFlow<List<String>> = MutableStateFlow(mockItemsList)
+    val itemsState = _itemsState.asStateFlow()
+
+    companion object {
+        private val mockItemsList
+            get() = (0..100).map { index ->
+                "Item $index"
+            }
+    }
 }
