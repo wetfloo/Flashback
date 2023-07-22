@@ -54,9 +54,11 @@ dependencies {
     implementation(libs.compose.icons)
     implementation(libs.compose.activity)
     implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.navigation)
     debugImplementation(libs.compose.ui.tooling)
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.composeShimmer)
+    implementation(libs.compose.navigation.hilt)
 
     implementation(libs.composeDestinations)
     ksp(libs.composeDestinations.compiler)
