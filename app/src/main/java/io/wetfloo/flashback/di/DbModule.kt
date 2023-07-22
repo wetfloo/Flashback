@@ -21,4 +21,8 @@ object DbModule {
             klass = AppDatabase::class.java,
             name = "app_db",
         ).build()
+
+    @Provides
+    @Singleton
+    fun provideNotificationsDao(db: AppDatabase) = db.notificationsDao
 }
