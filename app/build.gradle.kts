@@ -1,5 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
+private val applicationPackage = "io.wetfloo.flashback"
+
 plugins {
     id("buildlogic.android.application")
     id("buildlogic.android.hilt")
@@ -10,7 +12,7 @@ plugins {
 
 android {
     defaultConfig {
-        applicationId = "io.wetfloo.flashback"
+        applicationId = applicationPackage
         versionCode = 1
         versionName = "0.1"
 
@@ -34,7 +36,7 @@ android {
         compose = true
     }
 
-    namespace = "io.wetfloo.flashback"
+    namespace = applicationPackage
 }
 
 dependencies {
@@ -55,6 +57,9 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.composeShimmer)
+
+    implementation(libs.composeDestinations)
+    ksp(libs.composeDestinations.compiler)
 
     implementation(libs.result)
     implementation(libs.resultCoroutines)
