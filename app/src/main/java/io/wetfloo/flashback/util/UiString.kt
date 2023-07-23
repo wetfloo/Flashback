@@ -9,18 +9,18 @@ import androidx.compose.ui.platform.LocalContext
 import kotlinx.parcelize.Parcelize
 
 @Stable
-sealed interface UiError : Parcelable {
-    fun errorString(context: Context): String
+sealed interface UiString : Parcelable {
+    fun getString(context: Context): String
 }
 
 @Composable
-fun UiError.errorString() = errorString(LocalContext.current)
+fun UiString.getString() = getString(LocalContext.current)
 
 @Parcelize
 data class Res(
     @StringRes val stringRes: Int,
     val args: List<String> = emptyList(),
-) : UiError {
+) : UiString {
     constructor(
         @StringRes stringRes: Int,
         vararg args: Any,
@@ -29,13 +29,13 @@ data class Res(
         args = args.map { it.toString() },
     )
 
-    override fun errorString(context: Context) = context.getString(
+    override fun getString(context: Context) = context.getString(
         stringRes,
         args,
     )
 }
 
 @Parcelize
-data class Raw(val string: String) : UiError {
-    override fun errorString(context: Context) = string
+data class Raw(val string: String) : UiString {
+    override fun getString(context: Context) = string
 }
