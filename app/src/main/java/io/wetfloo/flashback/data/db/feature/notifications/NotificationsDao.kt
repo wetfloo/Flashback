@@ -1,10 +1,9 @@
-package io.wetfloo.flashback.data.db.dao
+package io.wetfloo.flashback.data.db.feature.notifications
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import io.wetfloo.flashback.data.db.model.NotificationLocal
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDateTime
 

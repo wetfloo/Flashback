@@ -3,8 +3,8 @@ package io.wetfloo.flashback.data.db
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import io.wetfloo.flashback.data.db.dao.NotificationsDao
-import io.wetfloo.flashback.data.db.model.NotificationLocal
+import io.wetfloo.flashback.data.db.feature.notifications.NotificationLocal
+import io.wetfloo.flashback.data.db.feature.notifications.NotificationsDao
 
 @Database(
     version = 1,

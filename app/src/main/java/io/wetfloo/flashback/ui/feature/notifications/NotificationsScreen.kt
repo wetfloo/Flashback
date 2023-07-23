@@ -26,7 +26,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import io.wetfloo.flashback.R
-import io.wetfloo.flashback.domain.model.NotificationDomain
+import io.wetfloo.flashback.domain.feature.notification.NotificationDomain
 import io.wetfloo.flashback.ui.feature.notifications.component.NotificationItem
 import io.wetfloo.flashback.ui.nav.PagedNavGraph
 import io.wetfloo.flashback.ui.theme.AppTheme

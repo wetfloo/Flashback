@@ -1,4 +1,4 @@
-package io.wetfloo.flashback.domain.model
+package io.wetfloo.flashback.domain.feature.notification
 
 import androidx.compose.runtime.Stable
 import java.time.LocalDateTime

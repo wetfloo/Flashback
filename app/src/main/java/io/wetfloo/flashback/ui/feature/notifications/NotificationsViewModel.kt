@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.wetfloo.flashback.domain.repo.NotificationsRepository
+import io.wetfloo.flashback.domain.feature.notification.NotificationsRepository
 import io.wetfloo.flashback.util.Idle
 import io.wetfloo.flashback.util.toReadyState
 import kotlinx.coroutines.flow.SharingStarted

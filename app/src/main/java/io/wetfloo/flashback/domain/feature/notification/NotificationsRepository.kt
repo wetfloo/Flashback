@@ -1,7 +1,7 @@
-package io.wetfloo.flashback.domain.repo
+package io.wetfloo.flashback.domain.feature.notification
 
 import de.yanneckreiss.kconmapper.generated.toNotificationDomain
-import io.wetfloo.flashback.data.db.dao.NotificationsDao
+import io.wetfloo.flashback.data.db.feature.notifications.NotificationsDao
 import io.wetfloo.flashback.util.mapIter
 import javax.inject.Inject
 
