@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "bd82a6c4d630b5ae4f80b8d507addf99",
+    "identityHash": "05aba4c515986a0fe93d83001ff14e6b",
     "entities": [
       {
         "tableName": "NotificationLocal",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`content` TEXT NOT NULL, `dateTime` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`content` TEXT NOT NULL, `dateTime` TEXT NOT NULL, `notificationId` TEXT NOT NULL, `senderAppId` TEXT NOT NULL, PRIMARY KEY(`notificationId`))",
         "fields": [
           {
             "fieldPath": "content",
@@ -21,16 +21,48 @@
             "notNull": true
           },
           {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
+            "fieldPath": "uuid",
+            "columnName": "notificationId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "senderAppId",
+            "columnName": "senderAppId",
+            "affinity": "TEXT",
             "notNull": true
           }
         ],
         "primaryKey": {
-          "autoGenerate": true,
+          "autoGenerate": false,
           "columnNames": [
-            "id"
+            "notificationId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "SenderAppLocal",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`appName` TEXT NOT NULL, `senderAppId` TEXT NOT NULL, PRIMARY KEY(`senderAppId`))",
+        "fields": [
+          {
+            "fieldPath": "appName",
+            "columnName": "appName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "appPackageName",
+            "columnName": "senderAppId",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "senderAppId"
           ]
         },
         "indices": [],
@@ -40,7 +72,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bd82a6c4d630b5ae4f80b8d507addf99')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '05aba4c515986a0fe93d83001ff14e6b')"
     ]
   }
 }
