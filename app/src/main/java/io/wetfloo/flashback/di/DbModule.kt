@@ -15,7 +15,7 @@ import javax.inject.Singleton
 object DbModule {
     @Provides
     @Singleton
-    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase =
+    fun appDatabase(@ApplicationContext context: Context): AppDatabase =
         Room.databaseBuilder(
             context = context,
             klass = AppDatabase::class.java,
@@ -24,5 +24,5 @@ object DbModule {
 
     @Provides
     @Singleton
-    fun provideNotificationsDao(db: AppDatabase) = db.notificationsDao
+    fun notificationsDao(db: AppDatabase) = db.notificationsDao
 }
