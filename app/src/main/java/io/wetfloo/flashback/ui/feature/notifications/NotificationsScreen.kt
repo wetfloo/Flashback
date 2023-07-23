@@ -18,12 +18,16 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import io.wetfloo.flashback.domain.model.NotificationDomain
 import io.wetfloo.flashback.ui.nav.PagedNavGraph
 import io.wetfloo.flashback.ui.theme.AppTheme
+import io.wetfloo.flashback.util.onReady
+import java.time.LocalDateTime
+import java.util.UUID
 
 @Composable
-private fun NotificationScreenContent(
-    state: List<String>,
+private fun NotificationsScreenContent(
+    state: List<NotificationDomain>,
 ) {
     val context = LocalContext.current
 
@@ -35,7 +39,7 @@ private fun NotificationScreenContent(
         ) {
             items(items = state) { item ->
                 Text(
-                    text = item,
+                    text = item.content,
                     modifier = Modifier
                         .clickable {
                             context.startActivity(
@@ -55,11 +59,13 @@ fun NotificationsScreen(
     navigator: DestinationsNavigator,
     viewModel: NotificationsViewModel = hiltViewModel(),
 ) {
-    val list by viewModel
-        .itemsState
+    val state by viewModel
+        .notifications
         .collectAsStateWithLifecycle()
 
-    NotificationScreenContent(state = list)
+    state.onReady { list ->
+        NotificationsScreenContent(state = list)
+    }
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
@@ -68,8 +74,17 @@ fun NotificationsScreen(
 private fun NotificationsScreenPreview() {
     AppTheme {
         val items = remember {
-            (0..100).map { "Item $it" }
+            (0..100)
+                .map { "Item $it" }
+                .map { str ->
+                    NotificationDomain(
+                        content = str,
+                        dateTime = LocalDateTime.now(),
+                        id = UUID.randomUUID().hashCode(),
+                    )
+                }
         }
-        NotificationScreenContent(state = items)
+
+        NotificationsScreenContent(state = items)
     }
 }

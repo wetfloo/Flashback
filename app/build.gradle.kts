@@ -78,6 +78,9 @@ dependencies {
     implementation(libs.moshi.adapters)
     ksp(libs.moshi.codegen)
 
+    implementation(libs.kconmapper)
+    ksp(libs.kconmapper.ksp)
+
     // Detect memory leaks
     //    debugImplementation(libs.square.leakcanary)
 }
