@@ -14,7 +14,7 @@ sealed interface UiString : Parcelable {
 }
 
 @Composable
-fun UiString.getString() = getString(LocalContext.current)
+fun UiString.string() = getString(LocalContext.current)
 
 @Parcelize
 data class Res(
