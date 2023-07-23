@@ -10,3 +10,11 @@ import kotlin.coroutines.CoroutineContext
  * added together with receiver's [CoroutineContext]
  */
 fun CoroutineContext.supervisor(parent: Job? = null) = CoroutineScope(this + SupervisorJob(parent))
+
+
+/**
+ * Returns a new [CoroutineScope] with [SupervisorJob],
+ * added together with the default dispatcher from [DispatchersProvider]
+ */
+fun DispatchersProvider.supervisor(parent: Job? = null) =
+    CoroutineScope(default + SupervisorJob(parent))
