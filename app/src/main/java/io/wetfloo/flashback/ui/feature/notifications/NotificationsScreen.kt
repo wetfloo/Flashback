@@ -2,9 +2,8 @@
 
 package io.wetfloo.flashback.ui.feature.notifications
 
-import android.content.Intent
 import android.content.res.Configuration
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -28,8 +27,10 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import io.wetfloo.flashback.R
 import io.wetfloo.flashback.domain.model.NotificationDomain
+import io.wetfloo.flashback.ui.feature.notifications.component.NotificationItem
 import io.wetfloo.flashback.ui.nav.PagedNavGraph
 import io.wetfloo.flashback.ui.theme.AppTheme
+import io.wetfloo.flashback.util.add
 import io.wetfloo.flashback.util.onReady
 import java.time.LocalDateTime
 import java.util.UUID
@@ -44,29 +45,29 @@ private fun NotificationsScreenContent(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(stringResource(R.string.notifications_title))
+                    Text(
+                        text = stringResource(R.string.notifications_title),
+                    )
                 },
             )
         },
     ) { scaffoldPaddingValues ->
-        Column(
-            modifier = Modifier
-                .padding(top = 16.dp),
-        ) {
+        Column {
             LazyColumn(
-                contentPadding = scaffoldPaddingValues,
+                contentPadding = scaffoldPaddingValues
+                    .add(top = 16.dp),
                 modifier = Modifier
                     .fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                items(items = state) { item ->
-                    Text(
-                        text = item.content,
+                items(
+                    items = state,
+                    key = { item -> item.id },
+                ) { notification ->
+                    NotificationItem(
+                        notification = notification,
                         modifier = Modifier
-                            .clickable {
-                                context.startActivity(
-                                    Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"),
-                                )
-                            }
+                            .padding(8.dp),
                     )
                 }
             }
