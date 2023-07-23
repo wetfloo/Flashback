@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Flashback</string>
     <string name="notifications_listener_service_name">Notifications listener service</string>
+
+
+    <string name="notifications_title">Notifications</string>
 </resources>
