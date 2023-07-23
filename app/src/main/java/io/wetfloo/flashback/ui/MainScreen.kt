@@ -1,4 +1,4 @@
-package io.wetfloo.flashback.ui.component
+package io.wetfloo.flashback.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -7,7 +7,6 @@ import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import io.wetfloo.flashback.ui.NavGraphs
 
 @RootNavGraph(start = true)
 @Destination
