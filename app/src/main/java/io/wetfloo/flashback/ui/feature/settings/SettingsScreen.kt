@@ -13,11 +13,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import io.wetfloo.flashback.ui.nav.PagedNavGraph
+import io.wetfloo.flashback.ui.nav.MainNavGraph
 
 @Composable
 @Destination
-@PagedNavGraph
+@MainNavGraph
 fun SettingsScreen(
     navigator: DestinationsNavigator,
     viewModel: SettingsViewModel = hiltViewModel(),

@@ -25,7 +25,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import io.wetfloo.flashback.R
 import io.wetfloo.flashback.domain.feature.notification.NotificationDomain
 import io.wetfloo.flashback.ui.feature.notifications.component.NotificationItem
-import io.wetfloo.flashback.ui.nav.PagedNavGraph
+import io.wetfloo.flashback.ui.nav.MainNavGraph
 import io.wetfloo.flashback.util.add
 import io.wetfloo.flashback.util.onReady
 
@@ -71,7 +71,7 @@ private fun NotificationsScreenContent(
 
 @Composable
 @Destination
-@PagedNavGraph(start = true)
+@MainNavGraph(start = true)
 fun NotificationsScreen(
     navigator: DestinationsNavigator,
     viewModel: NotificationsViewModel = hiltViewModel(),
