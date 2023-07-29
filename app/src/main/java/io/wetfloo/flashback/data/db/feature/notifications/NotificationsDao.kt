@@ -44,6 +44,35 @@ interface NotificationsDao {
     @Upsert
     suspend fun saveSenderApp(senderApp: SenderAppLocal)
 
+    @Transaction
+    suspend fun saveNotificationWithSenderApp(
+        notification: NotificationLocal,
+        senderApp: SenderAppLocal,
+    ) {
+        saveSenderApp(senderApp)
+        saveNotification(notification)
+    }
+
+    @Query(
+        """
+        SELECT *
+        FROM SenderAppLocal
+        WHERE senderAppId = :appPackageName
+        LIMIT 1
+        """
+    )
+    suspend fun getSenderAppByPackageName(appPackageName: String): SenderAppLocal?
+
+    @Transaction
+    suspend fun updateSenderAppIfNamedOrNull(senderApp: SenderAppLocal) {
+        // TODO: This is suboptimal, find a way to not do trips
+        //  to the database each time the app is saved
+        val oldSenderApp = getSenderAppByPackageName(senderApp.appPackageName)
+        if (oldSenderApp == null || senderApp.appName != senderApp.appPackageName) {
+            saveSenderApp(senderApp)
+        }
+    }
+
     @Query(
         """
         SELECT *

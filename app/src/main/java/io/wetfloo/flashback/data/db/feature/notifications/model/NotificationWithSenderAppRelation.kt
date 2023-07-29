@@ -8,7 +8,7 @@ data class NotificationWithSenderAppRelation(
     val notification: NotificationLocal,
 
     @Relation(
-        parentColumn = "notificationId",
+        parentColumn = "senderAppId",
         entityColumn = "senderAppId",
     )
     val senderApp: SenderAppLocal,

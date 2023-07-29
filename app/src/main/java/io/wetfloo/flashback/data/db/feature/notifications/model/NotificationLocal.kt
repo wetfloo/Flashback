@@ -9,7 +9,7 @@ import java.util.UUID
 @Entity
 data class NotificationLocal(
     val content: String,
-    val dateTime: LocalDateTime,
+    val dateTime: LocalDateTime = LocalDateTime.now(),
 
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "notificationId")

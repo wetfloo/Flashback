@@ -6,7 +6,11 @@
 
     <!-- Notifications -->
     <string name="notifications_title">Notifications</string>
+    <string name="notifications_could_not_get_app_name">Couldn\'t acquire the name for the following package: %1$s</string>
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>
+
+    <!-- All kinds of general errors -->
+    <string name="error_generic">Oops, something went wrong!</string>
 </resources>
