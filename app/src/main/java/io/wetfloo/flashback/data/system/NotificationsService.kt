@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class NotificationService : NotificationListenerService() {
+class NotificationsService : NotificationListenerService() {
     @Inject
     lateinit var dispatchers: DispatchersProvider
     private val coroutineScope by lazy {
