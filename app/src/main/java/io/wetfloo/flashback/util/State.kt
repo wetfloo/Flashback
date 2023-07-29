@@ -10,8 +10,8 @@ typealias StatefulFlow<T> = StateFlow<State<T>>
 @Stable
 sealed interface State<out T>
 
-data object Idle : State<Nothing>
-data object Loading : State<Nothing>
+object Idle : State<Nothing>
+object Loading : State<Nothing>
 data class Ready<out T>(val data: T) : State<T>
 
 inline fun <T> State<T>.onReady(action: (T) -> Unit) {
