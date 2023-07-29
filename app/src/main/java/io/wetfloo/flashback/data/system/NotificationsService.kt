@@ -24,7 +24,6 @@ class NotificationsService : NotificationListenerService() {
     lateinit var notificationsRepository: NotificationsRepository
 
     override fun onNotificationPosted(sbn: StatusBarNotification) {
-        super.onNotificationPosted(sbn)
         val notification = sbn.notification
         if (notification.flags and NotificationCompat.FLAG_GROUP_SUMMARY != 0) {
             // Ignore the groups to avoid notification duplicates.
