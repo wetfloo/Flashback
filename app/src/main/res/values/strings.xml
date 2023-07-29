@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">Flashback</string>
+
+    <!-- System -->
     <string name="notifications_listener_service_name">Notifications listener service</string>
 
-
+    <!-- Notifications -->
     <string name="notifications_title">Notifications</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
 </resources>
