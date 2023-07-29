@@ -41,7 +41,7 @@ fun PagedBar(
                         // Pop up to the root of the graph to
                         // avoid building up a large stack of destinations
                         // on the back stack as users select items
-                        popUpTo(NavGraphs.root) {
+                        popUpTo(NavGraphs.paged) {
                             saveState = true
                         }
 
