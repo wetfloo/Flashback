@@ -1,5 +1,7 @@
 package io.wetfloo.flashback.data.system
 
+import android.os.Build.VERSION
+import android.os.Build.VERSION_CODES
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import androidx.core.app.NotificationCompat
@@ -31,15 +33,20 @@ class NotificationService : NotificationListenerService() {
             return
         }
 
-        //        val text = notification.extras.getString("android.text") ?: return
-        //        val senderApp =kj
-        //        val notificationToSave = NotificationDomain(
-        //            content = text,
-        //            appPackage = sbn.packageName,
-        //        )
-        val notificationToSave = TODO()
-        coroutineScope.launch {
-            notificationsRepository.saveNotification(notificationToSave)
+        val appPackageName = if (VERSION.SDK_INT >= VERSION_CODES.Q) {
+            sbn.opPkg
+        } else {
+            sbn.packageName
+        }
+
+        val content = sbn.notification.extras.getString(NotificationCompat.EXTRA_TEXT)
+        if (content != null) {
+            coroutineScope.launch {
+                notificationsRepository.saveNotification(
+                    content = content,
+                    senderAppPackageName = appPackageName,
+                )
+            }
         }
     }
 }
