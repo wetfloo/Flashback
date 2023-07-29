@@ -25,7 +25,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import io.wetfloo.flashback.R
 import io.wetfloo.flashback.domain.feature.notification.NotificationDomain
 import io.wetfloo.flashback.ui.feature.notifications.component.NotificationItem
-import io.wetfloo.flashback.ui.nav.MainNavGraph
+import io.wetfloo.flashback.ui.nav.PagedNavGraph
 import io.wetfloo.flashback.util.add
 import io.wetfloo.flashback.util.onReady
 
@@ -71,8 +71,10 @@ private fun NotificationsScreenContent(
 
 @Composable
 @Destination
-@MainNavGraph(start = true)
+@PagedNavGraph(start = true)
 fun NotificationsScreen(
+    // Trying to navigate with a NavController passed down from the parent
+    // doesn't work. Don't know why, but it does work when passing DestinationsNavigator.
     navigator: DestinationsNavigator,
     viewModel: NotificationsViewModel = hiltViewModel(),
 ) {

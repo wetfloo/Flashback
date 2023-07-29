@@ -13,12 +13,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import io.wetfloo.flashback.ui.nav.MainNavGraph
+import io.wetfloo.flashback.ui.nav.PagedNavGraph
 
 @Composable
 @Destination
-@MainNavGraph
+@PagedNavGraph
 fun SettingsScreen(
+    // Trying to navigate with a NavController passed down from the parent
+    // doesn't work. Don't know why, but it does work when passing DestinationsNavigator.
     navigator: DestinationsNavigator,
     viewModel: SettingsViewModel = hiltViewModel(),
 ) {
