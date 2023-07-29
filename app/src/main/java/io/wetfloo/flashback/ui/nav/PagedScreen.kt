@@ -33,7 +33,9 @@ fun PagedScreen(
             navController = navController,
             navGraph = NavGraphs.paged,
             modifier = Modifier
-                .padding(scaffoldPaddingValues),
+                // Only bottom is used, because other paddings are accounted for
+                // in other screens
+                .padding(bottom = scaffoldPaddingValues.calculateBottomPadding())
         ) {
             composable(NotificationsScreenDestination) {
                 NotificationsScreen(navigator = navigator)

@@ -1,6 +1,5 @@
 package io.wetfloo.flashback.ui.feature.notifications.component
 
-import android.content.Intent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Text
@@ -20,12 +19,15 @@ fun NotificationItem(
         modifier = modifier,
     ) {
         Text(
-            text = notification.content,
+            text = "${notification.content} by ${notification.senderApp.appName}",
             modifier = Modifier
                 .clickable {
-                    context.startActivity(
-                        Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"),
-                    )
+                    val packageManager = context.packageManager
+                    val intent = packageManager
+                        .getLaunchIntentForPackage(notification.senderApp.appPackageName)
+                    if (intent != null) {
+                        context.startActivity(intent)
+                    }
                 }
         )
     }
